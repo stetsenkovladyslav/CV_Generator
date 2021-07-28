@@ -1,12 +1,38 @@
-version: '3.9'
+  version: "3.8"
+  services:
+    app:
+      image: generator
+      build:
+        ../
+      container_name: app
+      ports:
+        - 8080:8080
+      depends_on:
+        - mongodb
+        - localstack
+      restart: on-failure
 
-localstack:
-  image: localstack/localstack:0.12.9.1
-  environment:
-    - SERVICES=s3
-    - DATA_DIR=/tmp/localstack/data
-  volumes:
-    - ./localstack:/tmp/localstack
-  ports:
-    - 4566:4566
+    mongodb:
+      image: mongo:latest
+      container_name: mongodb
+      environment:
+        DATA_DIR: /tmp/mongodb/data
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
+      volumes:
+        - ./mongodb:/tmp/mongodb
+      ports:
+        - 27017:27017
+      restart: unless-stopped
+
+
+    localstack:
+      image: localstack/localstack:0.12.9.1
+      environment:
+         SERVICES: s3
+         DATA_DIR: /tmp/localstack/data
+      volumes:
+        - ./localstack:/tmp/localstack
+      ports:
+        - 4566:4566
 
