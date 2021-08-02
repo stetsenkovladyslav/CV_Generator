@@ -1,0 +1,21 @@
+spring:
+  data:
+    mongodb:
+      database: cv
+      uri: mongodb://root:root@localhost:27017/cv
+      username: root
+      password: root
+  kafka:
+    producer:
+      bootstrap-servers: ${SPRING_KAFKA_PRODUCER_SERVER}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.JsonSerializer
+
+server:
+  port: 8080
+
+
+aws:
+  s3-bucket: bucket
+  localstack:
+    hostname: http://localhost:4566
