@@ -1,6 +1,7 @@
 package com.example.consumer.pdf;
 
 
+
 import com.example.data.Person;
 import com.example.data.aws.service.AwsFileService;
 import com.lowagie.text.DocumentException;
@@ -21,8 +22,6 @@ import java.io.InputStream;
 @Service
 public class PdfServiceImpl implements PdfService {
 
-    private static final String FILE_FORMAT = ".pdf";
-
     private final AwsFileService awsFileService;
 
 
@@ -39,7 +38,7 @@ public class PdfServiceImpl implements PdfService {
 
         InputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
 
-        awsFileService.upload(person.getId().concat(FILE_FORMAT), inputStream);
+        awsFileService.upload(person.getId().concat(".pdf"), inputStream);
         outputStream.close();
         inputStream.close();
     }

@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
@@ -26,13 +25,5 @@ public class Person {
     private String goal;
     private String experience;
 
-    @PersistenceConstructor
-    public Person(String firstName, String lastName, Integer age, String goal, String experience) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.goal = goal;
-        this.experience = experience;
-    }
 
 }

@@ -1,4 +1,4 @@
 cd ..
-mvn package -DskipTests
+mvn  clean package spring-boot:repackage
 cd devops/
 docker-compose up --force-recreate --build

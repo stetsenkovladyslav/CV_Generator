@@ -1,25 +1,24 @@
 version: "3.8"
 services:
 
-  mongodb:
+  mongo:
     image: mongo:latest
-    container_name: mongodb
+    container_name: mongo
     environment:
-      DATA_DIR: /tmp/mongodb/data
-      MONGO_INITDB_DATABASE: cv
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+       MONGO_INITDB_ROOT_USERNAME: root
+       MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
       - ./mongodb:/tmp/mongodb
     ports:
       - 27017:27017
-    restart: unless-stopped
+    restart: always
+
 
   localstack:
     image: localstack/localstack:0.12.9.1
     environment:
-      SERVICES: s3
-      DATA_DIR: /tmp/localstack/data
+      - SERVICES=s3
+      - DATA_DIR=/tmp/localstack/data
     volumes:
       - ./localstack:/tmp/localstack
     ports:
@@ -57,6 +56,7 @@ services:
       SPRING_KAFKA_CONSUMER_SERVER: kafka:9092
     depends_on:
       - kafka
+      - localstack
     build:
       context: ../consumer
     ports:
@@ -66,8 +66,13 @@ services:
     container_name: producer
     environment:
       SPRING_KAFKA_PRODUCER_SERVER: kafka:9092
+      MONGO_DB_HOSTNAME: mongo
+      MONGO_DB_USERNAME: root
+      MONGO_DB_PASSWORD: root
     depends_on:
       - kafka
+      - mongo
+      - localstack
     build:
       context:  ../producer
     ports:

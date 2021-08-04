@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
 
+@Service
 public class AwsFileServiceImpl implements AwsFileService {
 
     private final AmazonS3 localstackClient;
