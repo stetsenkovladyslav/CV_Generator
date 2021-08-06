@@ -1,10 +1,10 @@
 package com.example.producer.controller;
 
-import com.example.data.Person;
 import com.example.producer.dto.PersonDto;
 import com.example.producer.mapper.PersonMapper;
 import com.example.producer.service.person.PersonService;
 import lombok.AllArgsConstructor;
+import model.Person;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

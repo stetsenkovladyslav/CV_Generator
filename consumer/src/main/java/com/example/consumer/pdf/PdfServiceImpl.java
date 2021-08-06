@@ -1,11 +1,10 @@
 package com.example.consumer.pdf;
 
 
-
-import com.example.data.Person;
-import com.example.data.aws.service.AwsFileService;
+import com.example.consumer.service.AwsFileService;
 import com.lowagie.text.DocumentException;
 import lombok.RequiredArgsConstructor;
+import model.Person;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -23,7 +22,6 @@ import java.io.InputStream;
 public class PdfServiceImpl implements PdfService {
 
     private final AwsFileService awsFileService;
-
 
     @Override
     public void generatePdf(Person person) throws IOException, DocumentException {

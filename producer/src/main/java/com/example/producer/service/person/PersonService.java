@@ -1,7 +1,7 @@
 package com.example.producer.service.person;
 
-import com.example.data.Person;
 import com.example.producer.dto.PersonDto;
+import model.Person;
 import org.springframework.core.io.InputStreamResource;
 
 public interface PersonService {

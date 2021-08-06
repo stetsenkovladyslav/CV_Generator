@@ -2,9 +2,9 @@ package com.example.consumer.consumer;
 
 
 import com.example.consumer.pdf.PdfService;
-import com.example.data.Person;
 import com.lowagie.text.DocumentException;
 import lombok.RequiredArgsConstructor;
+import model.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
