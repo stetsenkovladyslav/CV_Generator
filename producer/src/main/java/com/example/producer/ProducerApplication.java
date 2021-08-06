@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan("com.example.data")
+@EntityScan("com.example.cv_data.model")
 public class ProducerApplication {
 
     public static void main(String[] args) {

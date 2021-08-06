@@ -1,18 +1,11 @@
 version: "3.8"
 services:
 
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    environment:
-       MONGO_INITDB_ROOT_USERNAME: root
-       MONGO_INITDB_ROOT_PASSWORD: root
-    volumes:
-      - ./mongodb:/tmp/mongodb
+  mongo_db:
+    image: "mongo:4.4.3"
+    restart: always
     ports:
       - 27017:27017
-    restart: always
-
 
   localstack:
     image: localstack/localstack:0.12.9.1
