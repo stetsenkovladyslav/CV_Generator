@@ -6,10 +6,8 @@ import com.lowagie.text.DocumentException;
 import lombok.RequiredArgsConstructor;
 import model.Person;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-import org.thymeleaf.templatemode.TemplateMode;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import java.io.ByteArrayInputStream;
@@ -22,6 +20,7 @@ import java.io.InputStream;
 public class PdfServiceImpl implements PdfService {
 
     private final AwsFileService awsFileService;
+    private final SpringTemplateEngine templateEngine;
 
     @Override
     public void generatePdf(Person person) throws IOException, DocumentException {
@@ -42,12 +41,6 @@ public class PdfServiceImpl implements PdfService {
     }
 
     private String parseThymeleafTemplate(Person person) {
-        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-        templateResolver.setSuffix(".html");
-        templateResolver.setTemplateMode(TemplateMode.HTML);
-
-        TemplateEngine templateEngine = new TemplateEngine();
-        templateEngine.setTemplateResolver(templateResolver);
         Context context = new Context();
         context.setVariable("people", person);
 

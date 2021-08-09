@@ -1,5 +1,9 @@
 spring:
-
+  data:
+    mongodb:
+      host: mongo_db
+      port: 27017
+      database: cv
   kafka:
     consumer:
       bootstrap-servers: kafka:9092

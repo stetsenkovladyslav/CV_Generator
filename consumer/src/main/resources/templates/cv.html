@@ -1,33 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="ISO-8859-1">
-        <title>CV</title>
-        <style type="text/css">
-            span {
-                display: inline-block;
-                width: 200px;
-                margin: 10px;
-                text-align: center;
-            }
+<head>
+    <meta charset="ISO-8859-1">
+    <title>CV</title>
+    <style type="text/css">
+        span {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+        }
 
-        </style>
-    </head>
+    </style>
 
-    <body>
-        <div align="center">
-            <h2>CV create succeeded!</h2>
+</head>
 
-            <span>First name:</span><span th:text="${people.firstName}"></span><br/>
+<body>
 
-            <span>Last name:</span><span th:text="${people.lastName}"></span><br/>
+<div align="center">
 
-            <span>Age:</span><span th:text="${people.age}"></span><br/>
+    <h2>CV</h2>
 
-            <span>Goal:</span><span th:text="${people.goal}"></span><br/>
+    <h2><span th:text="${people.firstName}" th:text="${people.lastName}"></span></h2>
 
-            <span>Experience:</span><span th:text="${people.experience}"></span><br/>
+    <span>First name:</span><span th:text="${people.firstName}"></span><br/>
 
-        </div>
-    </body>
+    <span>Last name:</span><span th:text="${people.lastName}"></span><br/>
+
+    <span>Age:</span><span th:text="${people.age}"></span><br/>
+
+    <span>Goal:</span><span th:text="${people.goal}"></span><br/>
+
+    <span>Experience:</span><span th:text="${people.experience}"></span><br/>
+</div>
+</body>
 </html>

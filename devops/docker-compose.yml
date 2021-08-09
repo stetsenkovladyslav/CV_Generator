@@ -41,3 +41,32 @@ services:
       KAFKA_CREATE_TOPIC: "pdf:1:3"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+  consumer:
+    container_name: consumer
+    environment:
+      AWS_LOCALSTACK_HOSTNAME: http://localstack:4566
+      SPRING_KAFKA_CONSUMER_SERVER: kafka:9092
+    depends_on:
+      - kafka
+      - localstack
+    build:
+      context: ../consumer
+    ports:
+      - 8080:8080
+    restart: on-failure
+
+  producer:
+    container_name: producer
+    environment:
+      AWS_LOCALSTACK_HOSTNAME: http://localstack:4566
+      SPRING_KAFKA_PRODUCER_SERVER: kafka:9092
+    depends_on:
+      - kafka
+      - localstack
+      - mongo_db
+    build:
+      context: ../producer
+    ports:
+      - 8081:8081
+    restart: on-failure
