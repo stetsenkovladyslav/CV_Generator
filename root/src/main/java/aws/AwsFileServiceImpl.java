@@ -1,6 +1,7 @@
 package aws;
 
 import com.amazonaws.services.s3.AmazonS3;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -10,13 +11,13 @@ import org.springframework.stereotype.Service;
 import java.io.InputStream;
 
 @Service
-
+@Import(AwsConfig.class)
 public class AwsFileServiceImpl implements AwsFileService {
 
     private final AmazonS3 localstackClient;
     private final String bucketName;
 
-
+    @Autowired
     public AwsFileServiceImpl(AmazonS3 localstackClient,
                               @Value("${aws.s3-bucket}") String bucketName) {
         this.localstackClient = localstackClient;
