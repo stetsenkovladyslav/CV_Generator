@@ -1,4 +1,4 @@
-package com.example.producer.service.aws;
+package aws;
 
 import org.springframework.core.io.InputStreamResource;
 

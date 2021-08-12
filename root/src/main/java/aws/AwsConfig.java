@@ -1,10 +1,11 @@
-package com.example.consumer.configuration;
+package aws;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,10 @@ public class AwsConfig {
         this.bucketName = bucketName;
     }
 
+    @Bean
+    public AwsFileService awsFileService(@Autowired AmazonS3 localstackClient, @Value("${aws.s3-bucket}") String bucketName) {
+        return new AwsFileServiceImpl(localstackClient, bucketName);
+    }
 
     @Bean
     @Profile("dev")

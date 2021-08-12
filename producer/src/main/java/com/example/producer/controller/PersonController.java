@@ -14,8 +14,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.io.IOException;
 
-
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 public class PersonController {
     private final PersonService personService;

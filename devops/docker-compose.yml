@@ -42,19 +42,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  consumer:
-    container_name: consumer
-    environment:
-      AWS_LOCALSTACK_HOSTNAME: http://localstack:4566
-      SPRING_KAFKA_CONSUMER_SERVER: kafka:9092
-    depends_on:
-      - kafka
-      - localstack
-    build:
-      context: ../consumer
-    ports:
-      - 8080:8080
-    restart: on-failure
 
   producer:
     container_name: producer
@@ -68,5 +55,20 @@ services:
     build:
       context: ../producer
     ports:
+      - 8080:8080
+    restart: on-failure
+
+  consumer:
+    container_name: consumer
+    environment:
+      AWS_LOCALSTACK_HOSTNAME: http://localstack:4566
+      SPRING_KAFKA_CONSUMER_SERVER: kafka:9092
+    depends_on:
+      - kafka
+      - localstack
+    build:
+      context: ../consumer
+    ports:
       - 8081:8081
     restart: on-failure
+

@@ -4,7 +4,7 @@ package com.example.producer.service.person;
 import com.example.producer.dto.PersonDto;
 import com.example.producer.mapper.PersonMapper;
 import com.example.producer.persistence.PersonRepository;
-import com.example.producer.service.aws.AwsFileService;
+import aws.AwsFileService;
 import lombok.RequiredArgsConstructor;
 import model.Person;
 import org.springframework.core.io.InputStreamResource;

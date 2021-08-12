@@ -1,7 +1,7 @@
 package com.example.consumer.pdf;
 
 
-import com.example.consumer.service.AwsFileService;
+import aws.AwsFileService;
 import com.lowagie.text.DocumentException;
 import lombok.RequiredArgsConstructor;
 import model.Person;
@@ -44,7 +44,7 @@ public class PdfServiceImpl implements PdfService {
         Context context = new Context();
         context.setVariable("people", person);
 
-        return templateEngine.process("cv", context);
+        return templateEngine.process("resume", context);
     }
 
 }
