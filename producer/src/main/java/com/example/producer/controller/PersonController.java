@@ -4,6 +4,7 @@ import com.example.producer.dto.PersonDto;
 import com.example.producer.mapper.PersonMapper;
 import com.example.producer.service.person.PersonService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import model.Person;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -21,7 +22,6 @@ public class PersonController {
     private final PersonMapper personMapper;
 
     @PostMapping(
-            value = "/",
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
